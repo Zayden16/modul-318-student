@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SwissTransport;
 
 namespace SwissTransportUI
 {
@@ -23,6 +24,14 @@ namespace SwissTransportUI
         public MainWindow()
         {
             InitializeComponent();
+        }
+        Transport SwissTrans = new Transport();
+
+        private void Cmb_Departure_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            var Stations = SwissTrans.GetStations(Cmb_Departure.Text).StationList;
+            Cmb_Departure.IsDropDownOpen = true;
+            Cmb_Departure.ItemsSource = Stations;
         }
     }
 }
