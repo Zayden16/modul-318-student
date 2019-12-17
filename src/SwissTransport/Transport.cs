@@ -49,7 +49,7 @@ namespace SwissTransport
             toStation = System.Uri.EscapeDataString(toStation);
             time = System.Uri.EscapeDataString(time);
 
-            var request = CreateWebRequest("http://transport.opendata.ch/v1/connections?from=" + fromStation + "&to=" + toStation + "&date=" + date + "&time" + time);
+            var request = CreateWebRequest("http://transport.opendata.ch/v1/connections?from=" + fromStation + "&to=" + toStation + "&date=" + date + "&time=" + time);
             var response = request.GetResponse();
             var responseStream = response.GetResponseStream();
 
@@ -75,7 +75,7 @@ namespace SwissTransport
             return request;
         }
 
-        public Connections GetConnections(string fromStation, string toStattion)
+        public Connections GetConnections(string fromStation, string toStattion, string date, System.DateTime now)
         {
             throw new System.NotImplementedException();
         }
