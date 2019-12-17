@@ -43,13 +43,14 @@ namespace SwissTransport
             return null;
         }
 
-        public Connections GetConnections(string fromStation, string toStation, string date, string time)
+        public Connections GetConnections(string fromStation, string toStation, string Date, string Time, string Line)
         {
             fromStation = System.Uri.EscapeDataString(fromStation);
             toStation = System.Uri.EscapeDataString(toStation);
-            time = System.Uri.EscapeDataString(time);
+            Time = System.Uri.EscapeDataString(Time);
+            Date = System.Uri.EscapeDataString(Date);
 
-            var request = CreateWebRequest("http://transport.opendata.ch/v1/connections?from=" + fromStation + "&to=" + toStation + "&date=" + date + "&time=" + time);
+            var request = CreateWebRequest("http://transport.opendata.ch/v1/connections?from=" + fromStation + "&to=" + toStation + "&date=" + Date + "&time=" + Time);
             var response = request.GetResponse();
             var responseStream = response.GetResponseStream();
 
@@ -73,11 +74,6 @@ namespace SwissTransport
             request.Proxy = webProxy;
             
             return request;
-        }
-
-        public Connections GetConnections(string fromStation, string toStattion, string date, System.DateTime now)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

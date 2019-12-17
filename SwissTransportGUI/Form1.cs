@@ -105,6 +105,7 @@ namespace SwissTransportGUI
             }
         }
         #endregion
+
         #region Departure Board Tab
         private ListViewItem ShowDepartures(StationBoard stationBoard)
         {
@@ -135,5 +136,6 @@ namespace SwissTransportGUI
             }
         }
         #endregion
+
     }
 }
