@@ -84,7 +84,7 @@ namespace SwissTransportGUI
             if (!ValidateTime(Txt_Time))
             {
                 Txt_Time.BackColor = Color.FromArgb(255, 92, 92);
-                MessageBox.Show("Please Check Time Format (HH:MM)");
+                MessageBox.Show("Please Check Time Format (HH:mm)");
             }
             if (!ValidateStations(Cb_ConnectionFrom))
             {
