@@ -60,6 +60,7 @@ namespace SwissTransportGUI
             string TimeToValidate = textBox.Text;
             bool returnValue = true;
             Match match = Regex.Match(TimeToValidate, @"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$", RegexOptions.IgnoreCase);
+            // REGGEX for HH:mm Time Format
 
             if (!match.Success)
             {
