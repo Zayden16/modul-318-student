@@ -21,7 +21,7 @@ namespace SwissTransportGUI
 
         public SwissTransportApp()
         {
-            InitializeComponent();
+            InitializeComponent();  
             Txt_Time.Text = DateTime.Now.ToString("HH:mm");
         }
 
@@ -220,13 +220,19 @@ namespace SwissTransportGUI
         // Add StationNames based on User Input to a Combobox.
         private void AddStationNames(ComboBox comboBox)
         {
-
-            comboBox.DroppedDown = true;
-            foreach (global::SwissTransport.Station station in SwissTrans.GetStations(comboBox.Text).StationList)
-            {
-                if (station.Name != null)
-                    comboBox.Items.Add(station.Name);
+            try {
+                comboBox.DroppedDown = true;
+                foreach (global::SwissTransport.Station station in SwissTrans.GetStations(comboBox.Text).StationList)
+                {
+                    if (station.Name != null)
+                        comboBox.Items.Add(station.Name);
+                }
             }
+            catch
+            {
+                MessageBox.Show("ERROR: No Network Connection or too many Requests were sent!", "Error");
+            }
+            
         }
 
         // Clear StationNames from the Combobox.
