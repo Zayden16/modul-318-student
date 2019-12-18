@@ -22,6 +22,7 @@ namespace SwissTransportGUI
         public SwissTransportApp()
         {
             InitializeComponent();
+            Txt_Time.Text = DateTime.Now.ToString("HH:mm");
         }
 
         readonly Transport SwissTrans = new Transport();
@@ -47,11 +48,10 @@ namespace SwissTransportGUI
             AddStationNames(Cb_ConnectionTo);
         }
 
-        //Used for the Clock and Time Text to update each Second.
+        //Used for the Clock Text to update each Second.
         private void Timer1_Tick(object sender, EventArgs e)
         {
             Lbl_Uhr.Text = DateTime.Now.ToString("HH:mm:ss");
-            Txt_Time.Text = DateTime.Now.ToString("HH:mm");
         }
 
         //Validates the Text in the time Combobox
