@@ -481,7 +481,7 @@
             // 
             this.Tmr_Uhr.Enabled = true;
             this.Tmr_Uhr.Interval = 1000;
-            this.Tmr_Uhr.Tick += new System.EventHandler(this.timer1_Tick);
+            this.Tmr_Uhr.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // SwissTransportApp
             // 

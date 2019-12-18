@@ -24,8 +24,7 @@ namespace SwissTransportGUI
             InitializeComponent();
         }
 
-        Transport SwissTrans = new Transport();
-        Station Station = new Station();
+        readonly Transport SwissTrans = new Transport();
 
         #region TAB: Search for Connections 
         private ListViewItem ShowConnections(Connection connection)
@@ -49,7 +48,7 @@ namespace SwissTransportGUI
         }
 
         //Used for the Clock and Time Text to update each Second.
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             Lbl_Uhr.Text = DateTime.Now.ToString("HH:MM:ss");
             Txt_Time.Text = DateTime.Now.ToString("HH:MM");
@@ -121,7 +120,6 @@ namespace SwissTransportGUI
             lv_DepartureBoard.Items.Clear();
             if (ValidateStations(Cb_ConnectionsFromDepBoard))
             {
-                string date = Dtp_Date.Value.Year + "-" + Dtp_Date.Value.Month + "-" + Dtp_Date.Value.Day;
                 foreach (StationBoard stationBoard in SwissTrans.GetStationBoard(Cb_ConnectionsFromDepBoard.Text, "").Entries)
                 {
                     lv_DepartureBoard.Items.Add(ShowDepartures(stationBoard));
@@ -185,16 +183,22 @@ namespace SwissTransportGUI
         #region TAB: Stations Near Me
         private string GetPublicIP()
         {
-            string IP = new System.Net.WebClient().DownloadString("https://api.ipify.org");
-            return IP;
+            using (var WebClient = new System.Net.WebClient())
+            {
+                string IP = WebClient.DownloadString("https://api.ipify.org");
+                return IP;
+            }
         }
 
         private string GetLocationFromIP(string IP)
         {
-            string Location = new System.Net.WebClient().DownloadString("http://ip-api.com/json/" + IP + "?fields=lat,lon");
-            // NOT IMPLEMENTED COMPLETELY //
-            string xy = String.Concat(Location.Where(Char.IsDigit));
-            return xy;
+            using (var WebClient = new System.Net.WebClient())
+            {
+                string Location = WebClient.DownloadString("http://ip-api.com/json/" + IP + "?fields=lat,lon");
+                // NOT IMPLEMENTED COMPLETELY //
+                string xy = String.Concat(Location.Where(Char.IsDigit));
+                return xy;
+            }   
         }
 
         // Locates the User by using GetPublicIP() and GetLoctionFromIP().
