@@ -378,7 +378,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SwissTransInstaller"
         "ProductCode" = "8:{835E9751-97DE-48C8-BC80-116EDF7891A9}"
-        "PackageCode" = "8:{C2058661-9F66-4414-A905-FD6612E0DBF8}"
+        "PackageCode" = "8:{BBC2FD5B-7FFB-47C9-94D2-78AF170C4632}"
         "UpgradeCode" = "8:{FF34980C-A33E-48B5-A398-3E462A08EA7E}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -498,6 +498,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1A12E5D80CB54440823B48CD933E98F4"
+            {
+            "Name" = "8:YM-SwissTransportApp"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_CB69415531F54723AFF3FBE8929827AF"
+            "Folder" = "8:_CB69415531F54723AFF3FBE8929827AF"
+            "WorkingFolder" = "8:_CB69415531F54723AFF3FBE8929827AF"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
