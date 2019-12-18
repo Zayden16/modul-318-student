@@ -64,11 +64,11 @@
             this.Btn_Search_Map = new System.Windows.Forms.Button();
             this.Cb_Station_Map = new System.Windows.Forms.ComboBox();
             this.Browser = new System.Windows.Forms.WebBrowser();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Btn_LocateMe = new System.Windows.Forms.Button();
             this.Lbl_Uhr = new System.Windows.Forms.Label();
             this.Tmr_Uhr = new System.Windows.Forms.Timer(this.components);
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.Btn_LocateMe = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -80,11 +80,10 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2077, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(2077, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -107,7 +106,7 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.tabControl1.Location = new System.Drawing.Point(13, 142);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(2077, 1008);
@@ -119,9 +118,9 @@
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 38);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(2069, 966);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Search for a Connection";
@@ -140,7 +139,7 @@
             this.Lv_Connections.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lv_Connections.HideSelection = false;
             this.Lv_Connections.Location = new System.Drawing.Point(439, 8);
-            this.Lv_Connections.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Lv_Connections.Margin = new System.Windows.Forms.Padding(4);
             this.Lv_Connections.Name = "Lv_Connections";
             this.Lv_Connections.Size = new System.Drawing.Size(1608, 952);
             this.Lv_Connections.TabIndex = 8;
@@ -156,7 +155,7 @@
             // cDepartureTime
             // 
             this.cDepartureTime.Text = "Departure Time";
-            this.cDepartureTime.Width = 80;
+            this.cDepartureTime.Width = 100;
             // 
             // cDepartureStation
             // 
@@ -171,17 +170,17 @@
             // cArrivalTime
             // 
             this.cArrivalTime.Text = "Arrival Time";
-            this.cArrivalTime.Width = 80;
+            this.cArrivalTime.Width = 100;
             // 
             // cDuration
             // 
             this.cDuration.Text = "Duration";
-            this.cDuration.Width = 50;
+            this.cDuration.Width = 100;
             // 
             // cPlatform
             // 
             this.cPlatform.Text = "Platform";
-            this.cPlatform.Width = 50;
+            this.cPlatform.Width = 100;
             // 
             // groupBox2
             // 
@@ -190,9 +189,9 @@
             this.groupBox2.Controls.Add(this.Lbl_Date);
             this.groupBox2.Controls.Add(this.Dtp_Date);
             this.groupBox2.Location = new System.Drawing.Point(6, 354);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(6);
             this.groupBox2.Size = new System.Drawing.Size(425, 380);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
@@ -202,12 +201,13 @@
             // 
             this.Txt_Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_Time.Location = new System.Drawing.Point(40, 219);
-            this.Txt_Time.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Txt_Time.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_Time.Name = "Txt_Time";
             this.Txt_Time.Size = new System.Drawing.Size(162, 34);
             this.Txt_Time.TabIndex = 7;
             this.Txt_Time.Text = "HH:mm";
             this.Txt_Time.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Txt_Time.TextChanged += new System.EventHandler(this.Txt_Time_TextChanged);
             // 
             // Lbl_Time
             // 
@@ -232,7 +232,7 @@
             // Dtp_Date
             // 
             this.Dtp_Date.Location = new System.Drawing.Point(40, 103);
-            this.Dtp_Date.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Dtp_Date.Margin = new System.Windows.Forms.Padding(6);
             this.Dtp_Date.Name = "Dtp_Date";
             this.Dtp_Date.Size = new System.Drawing.Size(334, 34);
             this.Dtp_Date.TabIndex = 0;
@@ -245,9 +245,9 @@
             this.groupBox1.Controls.Add(this.Lbl_ConnectionFrom);
             this.groupBox1.Controls.Add(this.Cb_ConnectionFrom);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(425, 340);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -257,7 +257,7 @@
             // 
             this.Btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.Btn_Search.Location = new System.Drawing.Point(40, 246);
-            this.Btn_Search.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Btn_Search.Margin = new System.Windows.Forms.Padding(6);
             this.Btn_Search.Name = "Btn_Search";
             this.Btn_Search.Size = new System.Drawing.Size(337, 42);
             this.Btn_Search.TabIndex = 4;
@@ -270,7 +270,7 @@
             this.Cb_ConnectionTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.Cb_ConnectionTo.FormattingEnabled = true;
             this.Cb_ConnectionTo.Location = new System.Drawing.Point(40, 172);
-            this.Cb_ConnectionTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cb_ConnectionTo.Margin = new System.Windows.Forms.Padding(4);
             this.Cb_ConnectionTo.Name = "Cb_ConnectionTo";
             this.Cb_ConnectionTo.Size = new System.Drawing.Size(334, 37);
             this.Cb_ConnectionTo.TabIndex = 3;
@@ -303,7 +303,7 @@
             this.Cb_ConnectionFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.Cb_ConnectionFrom.FormattingEnabled = true;
             this.Cb_ConnectionFrom.Location = new System.Drawing.Point(40, 74);
-            this.Cb_ConnectionFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cb_ConnectionFrom.Margin = new System.Windows.Forms.Padding(4);
             this.Cb_ConnectionFrom.Name = "Cb_ConnectionFrom";
             this.Cb_ConnectionFrom.Size = new System.Drawing.Size(334, 37);
             this.Cb_ConnectionFrom.TabIndex = 0;
@@ -316,9 +316,9 @@
             this.tabPage2.Controls.Add(this.Lbl_ConectionsFromDepBoard);
             this.tabPage2.Controls.Add(this.Cb_ConnectionsFromDepBoard);
             this.tabPage2.Location = new System.Drawing.Point(4, 38);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(2069, 966);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Departure Board";
@@ -327,7 +327,7 @@
             // Btn_Search_DepBoard
             // 
             this.Btn_Search_DepBoard.Location = new System.Drawing.Point(377, 36);
-            this.Btn_Search_DepBoard.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Btn_Search_DepBoard.Margin = new System.Windows.Forms.Padding(6);
             this.Btn_Search_DepBoard.Name = "Btn_Search_DepBoard";
             this.Btn_Search_DepBoard.Size = new System.Drawing.Size(337, 49);
             this.Btn_Search_DepBoard.TabIndex = 10;
@@ -344,7 +344,7 @@
             this.lv_DepartureBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lv_DepartureBoard.HideSelection = false;
             this.lv_DepartureBoard.Location = new System.Drawing.Point(13, 95);
-            this.lv_DepartureBoard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lv_DepartureBoard.Margin = new System.Windows.Forms.Padding(4);
             this.lv_DepartureBoard.Name = "lv_DepartureBoard";
             this.lv_DepartureBoard.Size = new System.Drawing.Size(2035, 888);
             this.lv_DepartureBoard.TabIndex = 9;
@@ -381,7 +381,7 @@
             // 
             this.Cb_ConnectionsFromDepBoard.FormattingEnabled = true;
             this.Cb_ConnectionsFromDepBoard.Location = new System.Drawing.Point(13, 36);
-            this.Cb_ConnectionsFromDepBoard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cb_ConnectionsFromDepBoard.Margin = new System.Windows.Forms.Padding(4);
             this.Cb_ConnectionsFromDepBoard.Name = "Cb_ConnectionsFromDepBoard";
             this.Cb_ConnectionsFromDepBoard.Size = new System.Drawing.Size(334, 37);
             this.Cb_ConnectionsFromDepBoard.TabIndex = 2;
@@ -393,9 +393,9 @@
             this.tabPage3.Controls.Add(this.Cb_Station_Map);
             this.tabPage3.Controls.Add(this.Browser);
             this.tabPage3.Location = new System.Drawing.Point(4, 38);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(6);
             this.tabPage3.Size = new System.Drawing.Size(2069, 966);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Station Map";
@@ -404,7 +404,7 @@
             // Btn_Search_Map
             // 
             this.Btn_Search_Map.Location = new System.Drawing.Point(842, 178);
-            this.Btn_Search_Map.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Btn_Search_Map.Margin = new System.Windows.Forms.Padding(6);
             this.Btn_Search_Map.Name = "Btn_Search_Map";
             this.Btn_Search_Map.Size = new System.Drawing.Size(337, 42);
             this.Btn_Search_Map.TabIndex = 11;
@@ -416,7 +416,7 @@
             // 
             this.Cb_Station_Map.FormattingEnabled = true;
             this.Cb_Station_Map.Location = new System.Drawing.Point(842, 96);
-            this.Cb_Station_Map.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cb_Station_Map.Margin = new System.Windows.Forms.Padding(4);
             this.Cb_Station_Map.Name = "Cb_Station_Map";
             this.Cb_Station_Map.Size = new System.Drawing.Size(334, 37);
             this.Cb_Station_Map.TabIndex = 3;
@@ -430,6 +430,40 @@
             this.Browser.Size = new System.Drawing.Size(2289, 1180);
             this.Browser.TabIndex = 0;
             this.Browser.Url = new System.Uri("https://www.openstreetmap.org/#map=19/47.05010/8.31036&layers=T", System.UriKind.Absolute);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.textBox1);
+            this.tabPage4.Controls.Add(this.Btn_LocateMe);
+            this.tabPage4.Location = new System.Drawing.Point(4, 38);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(2069, 966);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Stations Near Me";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(378, 11);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(162, 34);
+            this.textBox1.TabIndex = 13;
+            this.textBox1.Text = "Your Location";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // Btn_LocateMe
+            // 
+            this.Btn_LocateMe.Location = new System.Drawing.Point(9, 9);
+            this.Btn_LocateMe.Margin = new System.Windows.Forms.Padding(6);
+            this.Btn_LocateMe.Name = "Btn_LocateMe";
+            this.Btn_LocateMe.Size = new System.Drawing.Size(337, 42);
+            this.Btn_LocateMe.TabIndex = 12;
+            this.Btn_LocateMe.Text = "Locate Me";
+            this.Btn_LocateMe.UseVisualStyleBackColor = true;
+            this.Btn_LocateMe.Click += new System.EventHandler(this.Btn_LocateMe_Click);
             // 
             // Lbl_Uhr
             // 
@@ -449,40 +483,6 @@
             this.Tmr_Uhr.Interval = 1000;
             this.Tmr_Uhr.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.textBox1);
-            this.tabPage4.Controls.Add(this.Btn_LocateMe);
-            this.tabPage4.Location = new System.Drawing.Point(4, 38);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage4.Size = new System.Drawing.Size(2069, 966);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Stations Near Me";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // Btn_LocateMe
-            // 
-            this.Btn_LocateMe.Location = new System.Drawing.Point(9, 9);
-            this.Btn_LocateMe.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.Btn_LocateMe.Name = "Btn_LocateMe";
-            this.Btn_LocateMe.Size = new System.Drawing.Size(337, 42);
-            this.Btn_LocateMe.TabIndex = 12;
-            this.Btn_LocateMe.Text = "Locate Me";
-            this.Btn_LocateMe.UseVisualStyleBackColor = true;
-            this.Btn_LocateMe.Click += new System.EventHandler(this.Btn_LocateMe_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(378, 11);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(162, 34);
-            this.textBox1.TabIndex = 13;
-            this.textBox1.Text = "Your Location";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // SwissTransportApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -494,7 +494,7 @@
             this.Controls.Add(this.Lbl_Name);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SwissTransportApp";
             this.Text = "Form1";
             this.tabControl1.ResumeLayout(false);

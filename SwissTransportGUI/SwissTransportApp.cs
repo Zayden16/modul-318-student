@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using SwissTransport;
 
 namespace SwissTransportGUI
@@ -26,6 +27,7 @@ namespace SwissTransportGUI
         Transport SwissTrans = new Transport();
         Station Station = new Station();
 
+        #region TAB: Search for Connections 
         private ListViewItem ShowConnections(Connection connection)
         {
             string[] connections = { connection.From.Departure.ToString().Substring(0, 10), connection.From.Departure.ToString().Substring(11, 5), connection.From.Station.Name, connection.To.Station.Name, connection.To.Arrival.ToString().Substring(11, 5), connection.Duration.Substring(3, 5), connection.From.Platform };
@@ -46,34 +48,63 @@ namespace SwissTransportGUI
             AddStationNames(Cb_ConnectionTo);
         }
 
-        //Used for the Clock to update each Second.
+        //Used for the Clock and Time Text to update each Second.
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Lbl_Uhr.Text = DateTime.Now.ToString("hh: mm:ss");
+            Lbl_Uhr.Text = DateTime.Now.ToString("HH:MM:ss");
+            Txt_Time.Text = DateTime.Now.ToString("HH:MM");
         }
 
-        public void Btn_Search_Click(object sender, EventArgs e)
+        //Validates the Text in the time Combobox
+        private bool ValidateTime(TextBox textBox)
+        {
+            string TimeToValidate = textBox.Text;
+            bool returnValue = true;
+            Match match = Regex.Match(TimeToValidate, @"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$", RegexOptions.IgnoreCase);
+
+            if (!match.Success)
+            {
+                returnValue = false;
+            }
+            return returnValue;
+        }
+
+        private void Btn_Search_Click(object sender, EventArgs e)
         {
             Lv_Connections.Items.Clear();
-            if (StationValid(Cb_ConnectionFrom) && StationValid(Cb_ConnectionTo))
+
+            if (ValidateStations(Cb_ConnectionFrom) && ValidateStations(Cb_ConnectionTo) && ValidateTime(Txt_Time))
             {
-                string date = Dtp_Date.Value.Year + "-" + Dtp_Date.Value.Month + "-" + Dtp_Date.Value.Day; //Correct Date Format
-                foreach (global::SwissTransport.Connection connection in SwissTrans.GetConnections(Cb_ConnectionFrom.Text, Cb_ConnectionTo.Text, date, Txt_Time.Text).ConnectionList)
+                string Date = Dtp_Date.Value.Year + "-" + Dtp_Date.Value.Month + "-" + Dtp_Date.Value.Day; //Correct Date Format
+
+                foreach (global::SwissTransport.Connection connection in SwissTrans.GetConnections(Cb_ConnectionFrom.Text, Cb_ConnectionTo.Text, Date, Txt_Time.Text).ConnectionList)
                 {
                     Lv_Connections.Items.Add(ShowConnections(connection));
                 }
             }
-            if (!StationValid(Cb_ConnectionFrom))
+            if (!ValidateTime(Txt_Time))
+            {
+                Txt_Time.BackColor = Color.FromArgb(255, 92, 92);
+                MessageBox.Show("Please Check Time Format (HH:MM)");
+            }
+            if (!ValidateStations(Cb_ConnectionFrom))
             {
                 SetCbBackgroundToRed(Cb_ConnectionFrom);
                 MessageBox.Show("Please Check the Value");
             }
-            if (!StationValid(Cb_ConnectionTo))
+            if (!ValidateStations(Cb_ConnectionTo))
             {
                 SetCbBackgroundToRed(Cb_ConnectionTo);
                 MessageBox.Show("Please Check the Value");
             }
         }
+        private void Txt_Time_TextChanged(object sender, EventArgs e)
+        {
+            Txt_Time.BackColor = SystemColors.Window;
+        }
+        #endregion
+
+        #region TAB: Departure Board
         private ListViewItem ShowDepartures(StationBoard stationBoard)
         {
             string[] departures = { stationBoard.Stop.Departure.ToString().Substring(11, 5), stationBoard.To, stationBoard.Category + stationBoard.Number };
@@ -88,7 +119,7 @@ namespace SwissTransportGUI
         private void Btn_Search_DepBoard_Click(object sender, EventArgs e)
         {
             lv_DepartureBoard.Items.Clear();
-            if (StationValid(Cb_ConnectionsFromDepBoard))
+            if (ValidateStations(Cb_ConnectionsFromDepBoard))
             {
                 string date = Dtp_Date.Value.Year + "-" + Dtp_Date.Value.Month + "-" + Dtp_Date.Value.Day;
                 foreach (StationBoard stationBoard in SwissTrans.GetStationBoard(Cb_ConnectionsFromDepBoard.Text, "").Entries)
@@ -102,7 +133,9 @@ namespace SwissTransportGUI
                 MessageBox.Show("Please Check the Value");
             }
         }
+        #endregion
 
+        #region TAB: Station Map
         // Gets the X and Y Coordinates of a Station and amalgamates it.
         private string GetStationGPSCoodrinates(string Station)
         {
@@ -128,7 +161,7 @@ namespace SwissTransportGUI
         }
         private void Btn_Search_Map_Click(object sender, EventArgs e)
         {
-            if (StationValid(Cb_Station_Map))
+            if (ValidateStations(Cb_Station_Map))
             {
                 var Coords = GetStationGPSCoodrinates(Cb_Station_Map.Text);
                 MoveMapToGPSCoordinates(Coords);
@@ -139,7 +172,7 @@ namespace SwissTransportGUI
                 MessageBox.Show("Please Check the Value");
             }
 
-           
+
         }
         private void Cb_Station_Map_TextUpdate(object sender, EventArgs e)
         {
@@ -147,8 +180,9 @@ namespace SwissTransportGUI
             ClearStationNames(Cb_Station_Map);
             AddStationNames(Cb_Station_Map);
         }
+        #endregion
 
-
+        #region TAB: Stations Near Me
         private string GetPublicIP()
         {
             string IP = new System.Net.WebClient().DownloadString("https://api.ipify.org");
@@ -170,6 +204,9 @@ namespace SwissTransportGUI
             textBox1.Text = Location;
         }
 
+        #endregion
+
+        #region Common Functions
         // Reset Combobox Color
         private void ResetComboboxBackground(ComboBox comboBox)
         {
@@ -179,7 +216,7 @@ namespace SwissTransportGUI
         // Add StationNames based on User Input to a Combobox.
         private void AddStationNames(ComboBox comboBox)
         {
-            
+
             comboBox.DroppedDown = true;
             foreach (global::SwissTransport.Station station in SwissTrans.GetStations(comboBox.Text).StationList)
             {
@@ -197,7 +234,7 @@ namespace SwissTransportGUI
         }
 
         // Checks if the Combobox is filled or not.
-        private bool StationValid(ComboBox comboBox)
+        private bool ValidateStations(ComboBox comboBox)
         {
             bool returnValue = true;
             if (comboBox.Text.Length <= 0 || comboBox.Text == null)
@@ -212,6 +249,6 @@ namespace SwissTransportGUI
         {
             comboBox.BackColor = Color.FromArgb(255, 92, 92);
         }
-
+        #endregion
     }
 }
