@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using SwissTransport;
-
-namespace SwissTransportGUI
+﻿namespace SwissTransportGUI
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+    using System.Text.RegularExpressions;
+    using SwissTransport;
     public partial class SwissTransportApp : Form
     {
-        public string fromStation;
-        public string toStation;
-        public string Date;
-        public string Time;
-
         public SwissTransportApp()
         {
             InitializeComponent();  
@@ -48,13 +42,13 @@ namespace SwissTransportGUI
             AddStationNames(Cb_ConnectionTo);
         }
 
-        //Used for the Clock Text to update each Second.
+        // Used for the Clock Text to update each Second.
         private void Timer1_Tick(object sender, EventArgs e)
         {
             Lbl_Uhr.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
-        //Validates the Text in the time Combobox
+        // Validates the Text in the time Combobox
         private bool ValidateTime(TextBox textBox)
         {
             string TimeToValidate = textBox.Text;
@@ -75,7 +69,8 @@ namespace SwissTransportGUI
 
             if (ValidateStations(Cb_ConnectionFrom) && ValidateStations(Cb_ConnectionTo) && ValidateTime(Txt_Time))
             {
-                string Date = Dtp_Date.Value.Year + "-" + Dtp_Date.Value.Month + "-" + Dtp_Date.Value.Day; //Correct Date Format
+                // Correct Date Format
+                string Date = Dtp_Date.Value.Year + "-" + Dtp_Date.Value.Month + "-" + Dtp_Date.Value.Day; 
 
                 foreach (global::SwissTransport.Connection connection in SwissTrans.GetConnections(Cb_ConnectionFrom.Text, Cb_ConnectionTo.Text, Date, Txt_Time.Text).ConnectionList)
                 {
@@ -121,7 +116,7 @@ namespace SwissTransportGUI
             lv_DepartureBoard.Items.Clear();
             if (ValidateStations(Cb_ConnectionsFromDepBoard))
             {
-                foreach (StationBoard stationBoard in SwissTrans.GetStationBoard(Cb_ConnectionsFromDepBoard.Text, "").Entries)
+                foreach (StationBoard stationBoard in SwissTrans.GetStationBoard(Cb_ConnectionsFromDepBoard.Text, string.Empty).Entries)
                 {
                     lv_DepartureBoard.Items.Add(ShowDepartures(stationBoard));
                 }
@@ -144,12 +139,10 @@ namespace SwissTransportGUI
                 string x = Convert.ToString(station.Coordinate.XCoordinate);
                 string y = Convert.ToString(station.Coordinate.YCoordinate);
                 string amalgamatedCoordinates = x + "/" + y;
-                return (amalgamatedCoordinates);
+                return amalgamatedCoordinates;
             }
             else
-            {
-                return ("ERROR");
-            }
+                return "ERROR";
         }
         // Update the Browser with the actual GPS Coordinates.
         private void MoveMapToGPSCoordinates(string Coordinates)
@@ -197,7 +190,7 @@ namespace SwissTransportGUI
             {
                 string Location = WebClient.DownloadString("http://ip-api.com/json/" + IP + "?fields=lat,lon");
                 // NOT IMPLEMENTED COMPLETELY //
-                string xy = String.Concat(Location.Where(Char.IsDigit));
+                string xy = String.Concat(Location.Where(char.IsDigit));
                 return xy;
             }   
         }

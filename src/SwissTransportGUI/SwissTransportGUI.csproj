@@ -66,11 +66,13 @@
     </Compile>
     <Compile Include="SwissTransportApp.Designer.cs">
       <DependentUpon>SwissTransportApp.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="SwissTransportApp.resx">
       <DependentUpon>SwissTransportApp.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
