@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Lbl_Name = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -78,21 +77,11 @@
             this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(28, 28);
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2077, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // Lbl_Name
             // 
             this.Lbl_Name.AutoSize = true;
             this.Lbl_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Name.Location = new System.Drawing.Point(7, 61);
+            this.Lbl_Name.Location = new System.Drawing.Point(12, 24);
             this.Lbl_Name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_Name.Name = "Lbl_Name";
             this.Lbl_Name.Size = new System.Drawing.Size(382, 64);
@@ -470,7 +459,7 @@
             // 
             this.Lbl_Uhr.AutoSize = true;
             this.Lbl_Uhr.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Uhr.Location = new System.Drawing.Point(1795, 61);
+            this.Lbl_Uhr.Location = new System.Drawing.Point(1791, 24);
             this.Lbl_Uhr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_Uhr.Name = "Lbl_Uhr";
             this.Lbl_Uhr.Size = new System.Drawing.Size(246, 64);
@@ -493,8 +482,6 @@
             this.Controls.Add(this.Lbl_Uhr);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.Lbl_Name);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SwissTransportApp";
             this.Text = "SwissTransport App";
@@ -515,8 +502,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label Lbl_Name;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
